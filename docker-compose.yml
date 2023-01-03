@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+
+    jupyter-ds:
+      build:
+        context: .
+        dockerfile: ./dockerfiles/dockerfile-jupyter
+      user: root
+      environment:
+        - GRANT_SUDO=yes
+        - JUPYTER_ENABLE_LAB=yes
+        # - JUPYTER_TOKEN="lab"
+      volumes:
+        - ./data:/home/jovyan/github-anari
+      ports:
+        - "8888:8888"
+      container_name: "jupyter-ds"
